@@ -9,16 +9,16 @@ var jwt = require('jsonwebtoken');
 const app = express();
 app.set('secretKey', 'nodeRestApi');
 
-mongoose
-.connect('mongodb://localhost/node_rest_api_jwt', {
-useUnifiedTopology: true,
-useNewUrlParser: true,
-})
-.then(() => console.log('DB Connected!'))
-.catch(err => {
-console.log("DB Connection Error:");
-});
-// mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error:'));
+// mongoose
+// .connect('mongodb://localhost/node_rest_api_jwt', {
+// useUnifiedTopology: true,
+// useNewUrlParser: true,
+// })
+// .then(() => console.log('DB Connected!'))
+// .catch(err => {
+// console.log("DB Connection Error:");
+// });
+mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error:'));
 app.use(logger('dev'));
 
 app.use(bodyParser.urlencoded({extended: false}));

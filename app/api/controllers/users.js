@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 
 module.exports = {
     create: function(req, res, next) {
+        // console.log(req);
         userModel.create({name: req.body.name, email: req.body.email, password: req.body.password}, function(err, result) {
             if(err) {
                 next(err);
@@ -14,7 +15,7 @@ module.exports = {
     },
     
     authenticate : function(req, res, next) {
-        userModel.findOne({emal: req.body.email}, function(err, userInfo) {
+        userModel.findOne({email: req.body.email}, function(err, userInfo) {
             if(err){
                 next(err)
             }
